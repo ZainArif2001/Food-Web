@@ -1,141 +1,141 @@
 /* ============================================================
-   B&C Döner Kebab & Pizzería — Datos de la carta
-   Para cambiar precios, edita solo los números de abajo.
+   B&C Döner Kebab & Pizzeria — Menu data
+   To change prices, just edit the numbers below.
    ============================================================ */
 
 const COMBOS = [
-  { n: 1, items: ["1 Döner kebab normal (pan normal)", "Patatas fritas", "Bebida 33cl"], price: "6,95€", tag: "El más pedido" },
-  { n: 2, items: ["2 Döner kebab normal (pan normal)", "Patatas fritas", "Bebida 2L"], price: "8,95€" },
-  { n: 3, items: ["3 Döner kebab normal (pan normal)", "Patatas fritas", "Bebida 2L"], price: "15,95€" },
-  { n: 4, items: ["Alitas de pollo (6 und), nuggets (6 und) o falafel (6 und)", "Patatas fritas", "Bebida 33cl"], price: "6,95€" },
-  { n: 5, items: ["Hamburguesa de pollo", "Patatas fritas", "Bebida 33cl"], price: "6,95€" },
-  { n: 6, items: ["1 Pizza mediana", "2 Döner kebab normal (pan normal)", "Patatas fritas", "Bebida 2L"], price: "18,95€" },
-  { n: 7, items: ["1 Pizza familiar", "Bebida 2L"], price: "16,95€" },
-  { n: 8, items: ["2 Pizzas grandes", "Ensalada basic", "Bebida 2L"], price: "22,95€" },
+  { n: 1, items: ["1 Döner kebab regular (normal bread)", "Fries", "Drink 33cl"], price: "€6.95", tag: "Most popular" },
+  { n: 2, items: ["2 Döner kebab regular (normal bread)", "Fries", "Drink 2L"], price: "€8.95" },
+  { n: 3, items: ["3 Döner kebab regular (normal bread)", "Fries", "Drink 2L"], price: "€15.95" },
+  { n: 4, items: ["Chicken wings (6 pcs), nuggets (6 pcs) or falafel (6 pcs)", "Fries", "Drink 33cl"], price: "€6.95" },
+  { n: 5, items: ["Chicken burger", "Fries", "Drink 33cl"], price: "€6.95" },
+  { n: 6, items: ["1 Medium pizza", "2 Döner kebab regular (normal bread)", "Fries", "Drink 2L"], price: "€18.95" },
+  { n: 7, items: ["1 Family pizza", "Drink 2L"], price: "€16.95" },
+  { n: 8, items: ["2 Large pizzas", "Basic salad", "Drink 2L"], price: "€22.95" },
 ];
 
 const MENU_EXTRAS = [
-  "Pollo <b>+0,50€</b>",
-  "Mixto <b>+0,50€</b>",
-  "Queso <b>+1,00€</b>",
-  "Solo carne <b>+1,00€</b>",
-  "Patatas <b>+1,00€</b>",
-  "Pan rollo <b>+0,50€</b>",
-  "Box normal <b>4,50€</b> · Box grande <b>5,50€</b>",
+  "Chicken <b>+€0.50</b>",
+  "Mixed <b>+€0.50</b>",
+  "Cheese <b>+€1.00</b>",
+  "Meat only <b>+€1.00</b>",
+  "Fries <b>+€1.00</b>",
+  "Wrap bread <b>+€0.50</b>",
+  "Regular box <b>€4.50</b> · Large box <b>€5.50</b>",
 ];
 
 const SECTIONS = [
   {
     id: "pizzas",
     label: "Pizzas",
-    sizes: ["Mediana 25cm", "Grande 30cm", "Familiar 40cm"],
-    shortSizes: ["Med.", "Gran.", "Fam."],
-    note: "Ingredientes extra: <b>Mediana +0,50€</b> · <b>Grande +1,00€</b> · <b>Familiar +1,50€</b>",
+    sizes: ["Medium 25cm", "Large 30cm", "Family 40cm"],
+    shortSizes: ["Med.", "Lge.", "Fam."],
+    note: "Extra toppings: <b>Medium +€0.50</b> · <b>Large +€1.00</b> · <b>Family +€1.50</b>",
     items: [
-      [1,  "Margarita",      "Tomate, mozzarella y orégano",                                                   ["7,00", "8,00", "11,00"]],
-      [2,  "Cuatro Quesos",  "Tomate, mozzarella, queso gouda, cheddar, gorgonzola y orégano",                 ["8,00", "9,00", "13,50"]],
-      [3,  "Barbacoa",       "Salsa barbacoa, mozzarella, jamón york, ternera, cebolla y orégano",             ["7,00", "8,50", "12,50"]],
-      [4,  "Infierno",       "Tomate, mozzarella, ternera, pimiento verde y orégano",                          ["7,00", "8,50", "12,50"]],
-      [5,  "Mediterránea",   "Tomate, mozzarella, pimiento rojo, pimiento verde, atún y orégano",              ["7,00", "8,50", "12,50"]],
-      [6,  "Napolitana",     "Tomate, mozzarella, anchoas, olivas negras y orégano",                           ["7,00", "8,50", "12,50"]],
-      [7,  "Serrana",        "Tomate, mozzarella, jamón serrano, tomate en dados, aceite de oliva y orégano",  ["7,00", "8,50", "12,50"]],
-      [8,  "Veneciana",      "Tomate, mozzarella, atún, olivas verdes, cebolla y orégano",                     ["7,00", "8,50", "12,50"]],
-      [9,  "4 Estaciones",   "Tomate, mozzarella, jamón york, champiñones, olivas, salami y orégano",          ["7,00", "8,50", "12,50"]],
-      [10, "Calzone",        "Tomate, mozzarella, salami, champiñones y orégano",                              ["7,00", "8,50", "12,50"]],
-      [11, "Vegetal",        "Tomate, mozzarella, berenjena, calabacín, cebolla, pimiento y orégano",          ["7,00", "8,50", "12,50"]],
-      [12, "Desi",           "Tomate, mozzarella, pollo, pimiento, cebolla, aceitunas, picante y orégano",     ["8,00", "10,00", "14,50"]],
-      [13, "Kebab",          "Tomate, mozzarella, carne de kebab, salsa blanca y orégano",                     ["7,00", "8,50", "12,50"]],
-      [14, "Mixto",          "Tomate, mozzarella, carne de pollo, ternera y orégano",                          ["7,00", "8,50", "12,50"]],
-      [15, "Punjabi",        "Tomate, queso, ternera picante, cebolla y orégano",                              ["7,00", "8,50", "12,50"]],
-      [16, "Halal",          "Tomate, queso, pollo, cebolla, pimiento y orégano",                              ["7,00", "8,50", "12,50"]],
-      [17, "Hawaiana",       "Tomate, mozzarella, jamón york, piña, champiñones y orégano",                    ["7,00", "8,50", "12,50"]],
-      [18, "Salami",         "Tomate, mozzarella, salami y orégano",                                           ["7,00", "8,50", "12,50"]],
-      [19, "Pepperoni",      "Tomate, mozzarella, pepperoni y orégano",                                        ["7,00", "8,50", "12,50"]],
-      [20, "Carbonara",      "Tomate, mozzarella, jamón york, cebolla, nata y orégano",                        ["7,50", "9,00", "13,50"]],
-      [21, "Italiana",       "Tomate, queso, pimiento, atún, salami y orégano",                                ["7,00", "8,50", "12,50"]],
-      [22, "Marinera",       "Tomate, queso, gamba, atún, cebolla y orégano",                                  ["7,00", "8,50", "12,50"]],
-      [23, "B&C",            "Tomate, queso, huevo, olivas, salami y orégano",                                 ["7,00", "8,50", "12,50"]],
-      [24, "España",         "Tomate, mozzarella, champiñón, bacon, jamón york y orégano",                     ["7,00", "8,50", "12,50"]],
-      [25, "Caprichosa",     "Tomate, mozzarella, pollo, ternera, cebolla, huevo y orégano",                   ["7,00", "8,50", "12,50"]],
+      [1,  "Margarita",      "Tomato, mozzarella and oregano",                                                  ["7.00", "8.00", "11.00"]],
+      [2,  "Cuatro Quesos",  "Tomato, mozzarella, gouda, cheddar, gorgonzola and oregano",                      ["8.00", "9.00", "13.50"]],
+      [3,  "Barbacoa",       "BBQ sauce, mozzarella, ham, beef, onion and oregano",                             ["7.00", "8.50", "12.50"]],
+      [4,  "Infierno",       "Tomato, mozzarella, beef, green pepper and oregano",                              ["7.00", "8.50", "12.50"]],
+      [5,  "Mediterránea",   "Tomato, mozzarella, red pepper, green pepper, tuna and oregano",                  ["7.00", "8.50", "12.50"]],
+      [6,  "Napolitana",     "Tomato, mozzarella, anchovies, black olives and oregano",                         ["7.00", "8.50", "12.50"]],
+      [7,  "Serrana",        "Tomato, mozzarella, serrano ham, diced tomato, olive oil and oregano",            ["7.00", "8.50", "12.50"]],
+      [8,  "Veneciana",      "Tomato, mozzarella, tuna, green olives, onion and oregano",                       ["7.00", "8.50", "12.50"]],
+      [9,  "4 Estaciones",   "Tomato, mozzarella, ham, mushrooms, olives, salami and oregano",                  ["7.00", "8.50", "12.50"]],
+      [10, "Calzone",        "Tomato, mozzarella, salami, mushrooms and oregano",                               ["7.00", "8.50", "12.50"]],
+      [11, "Vegetal",        "Tomato, mozzarella, eggplant, zucchini, onion, pepper and oregano",               ["7.00", "8.50", "12.50"]],
+      [12, "Desi",           "Tomato, mozzarella, chicken, pepper, onion, olives, chilli and oregano",          ["8.00", "10.00", "14.50"]],
+      [13, "Kebab",          "Tomato, mozzarella, kebab meat, white sauce and oregano",                         ["7.00", "8.50", "12.50"]],
+      [14, "Mixto",          "Tomato, mozzarella, chicken, beef and oregano",                                   ["7.00", "8.50", "12.50"]],
+      [15, "Punjabi",        "Tomato, cheese, spicy beef, onion and oregano",                                   ["7.00", "8.50", "12.50"]],
+      [16, "Halal",          "Tomato, cheese, chicken, onion, pepper and oregano",                              ["7.00", "8.50", "12.50"]],
+      [17, "Hawaiana",       "Tomato, mozzarella, ham, pineapple, mushrooms and oregano",                       ["7.00", "8.50", "12.50"]],
+      [18, "Salami",         "Tomato, mozzarella, salami and oregano",                                          ["7.00", "8.50", "12.50"]],
+      [19, "Pepperoni",      "Tomato, mozzarella, pepperoni and oregano",                                       ["7.00", "8.50", "12.50"]],
+      [20, "Carbonara",      "Tomato, mozzarella, ham, onion, cream and oregano",                               ["7.50", "9.00", "13.50"]],
+      [21, "Italiana",       "Tomato, cheese, pepper, tuna, salami and oregano",                                ["7.00", "8.50", "12.50"]],
+      [22, "Marinera",       "Tomato, cheese, prawns, tuna, onion and oregano",                                 ["7.00", "8.50", "12.50"]],
+      [23, "B&C",            "Tomato, cheese, egg, olives, salami and oregano",                                 ["7.00", "8.50", "12.50"]],
+      [24, "España",         "Tomato, mozzarella, mushroom, bacon, ham and oregano",                            ["7.00", "8.50", "12.50"]],
+      [25, "Caprichosa",     "Tomato, mozzarella, chicken, beef, onion, egg and oregano",                       ["7.00", "8.50", "12.50"]],
     ],
   },
   {
     id: "kebab-normal",
-    label: "Döner · Pan Normal",
-    sizes: ["Normal", "Grande"],
-    shortSizes: ["Norm.", "Gran."],
-    note: "Todos los döner llevan pan, lechuga, tomate, cebolla, maíz y salsas · Pollo <b>+0,50€</b>",
+    label: "Döner · Regular Bread",
+    sizes: ["Regular", "Large"],
+    shortSizes: ["Reg.", "Lge."],
+    note: "All döner include bread, lettuce, tomato, onion, corn and sauces · Chicken <b>+€0.50</b>",
     items: [
-      [46, "Döner Normal",              "De pollo o ternera",                                     ["4,00", "5,00"]],
-      [47, "Döner Mixto",               "De pollo y ternera",                                     ["4,50", "5,50"]],
-      [48, "Döner Solo Carne",          "De pollo o ternera · pan y salsas",                      ["5,00", "6,50"]],
-      [49, "Döner Mixto Solo Carne",    "De pollo y ternera · pan y salsas",                      ["5,50", "7,50"]],
-      [50, "Döner con Queso",           "De pollo o ternera",                                     ["4,50", "5,50"]],
-      [51, "Döner Vegetal",             "Lechuga, tomate, cebolla, maíz, queso y salsas",         ["4,00", "4,50"]],
-      [52, "Döner con Falafel",         "Falafel, queso, lechuga, tomate, cebolla, maíz y salsas",["4,00", "4,50"]],
-      [53, "Döner Barbacoa",            "De pollo o ternera · salsa barbacoa",                    ["4,50", "5,50"]],
-      [54, "Döner con Patatas Fritas",  "De pollo o ternera · patatas fritas dentro",             ["5,00", "6,00"]],
-      [55, "Döner Mixto con Patatas",   "De pollo y ternera · patatas fritas dentro",             ["5,50", "6,50"]],
-      [56, "Döner en Plato",            "De pollo o ternera · patatas fritas y salsas",           ["6,50", "7,50"]],
+      [46, "Döner Regular",             "Chicken or beef",                                        ["4.00", "5.00"]],
+      [47, "Döner Mixed",               "Chicken and beef",                                       ["4.50", "5.50"]],
+      [48, "Döner Meat Only",           "Chicken or beef · bread and sauces",                     ["5.00", "6.50"]],
+      [49, "Döner Mixed Meat Only",     "Chicken and beef · bread and sauces",                    ["5.50", "7.50"]],
+      [50, "Döner with Cheese",         "Chicken or beef",                                        ["4.50", "5.50"]],
+      [51, "Döner Veggie",              "Lettuce, tomato, onion, corn, cheese and sauces",        ["4.00", "4.50"]],
+      [52, "Döner with Falafel",        "Falafel, cheese, lettuce, tomato, onion, corn, sauces",  ["4.00", "4.50"]],
+      [53, "Döner BBQ",                 "Chicken or beef · BBQ sauce",                            ["4.50", "5.50"]],
+      [54, "Döner with Fries",          "Chicken or beef · fries inside",                         ["5.00", "6.00"]],
+      [55, "Döner Mixed with Fries",    "Chicken and beef · fries inside",                        ["5.50", "6.50"]],
+      [56, "Döner on a Plate",          "Chicken or beef · fries and sauces",                     ["6.50", "7.50"]],
     ],
   },
   {
     id: "kebab-rollo",
-    label: "Döner · Pan Rollo",
-    sizes: ["Normal", "Grande"],
-    shortSizes: ["Norm.", "Gran."],
-    note: "Todos los döner llevan pan, lechuga, tomate, cebolla, maíz y salsas",
+    label: "Döner · Wrap Bread",
+    sizes: ["Regular", "Large"],
+    shortSizes: ["Reg.", "Lge."],
+    note: "All döner include bread, lettuce, tomato, onion, corn and sauces",
     items: [
-      [57, "Döner Normal",              "De pollo o ternera",                                     ["4,50", "5,50"]],
-      [58, "Döner Mixto",               "De pollo y ternera",                                     ["5,00", "6,00"]],
-      [59, "Döner Solo Carne",          "De pollo o ternera · pan y salsas",                      ["6,00", "7,50"]],
-      [60, "Döner Mixto Solo Carne",    "De pollo y ternera · pan y salsas",                      ["6,50", "8,00"]],
-      [61, "Döner con Queso",           "De pollo o ternera",                                     ["5,50", "6,50"]],
-      [62, "Döner Vegetal",             "Lechuga, tomate, cebolla, maíz, queso y salsas",         ["4,00", "5,00"]],
-      [63, "Döner con Falafel",         "Falafel, queso, lechuga, tomate, cebolla, maíz y salsas",["4,50", "5,50"]],
-      [64, "Döner Barbacoa",            "De pollo o ternera · salsa barbacoa",                    ["5,00", "6,00"]],
-      [65, "Döner con Patatas Fritas",  "De pollo o ternera · patatas fritas dentro",             ["5,50", "6,50"]],
-      [66, "Döner Mixto con Patatas",   "De pollo y ternera · patatas fritas dentro",             ["6,00", "7,00"]],
-      [67, "Döner en Plato",            "De pollo o ternera · patatas fritas y salsas",           ["6,50", "7,50"]],
+      [57, "Döner Regular",             "Chicken or beef",                                        ["4.50", "5.50"]],
+      [58, "Döner Mixed",               "Chicken and beef",                                       ["5.00", "6.00"]],
+      [59, "Döner Meat Only",           "Chicken or beef · bread and sauces",                     ["6.00", "7.50"]],
+      [60, "Döner Mixed Meat Only",     "Chicken and beef · bread and sauces",                    ["6.50", "8.00"]],
+      [61, "Döner with Cheese",         "Chicken or beef",                                        ["5.50", "6.50"]],
+      [62, "Döner Veggie",              "Lettuce, tomato, onion, corn, cheese and sauces",        ["4.00", "5.00"]],
+      [63, "Döner with Falafel",        "Falafel, cheese, lettuce, tomato, onion, corn, sauces",  ["4.50", "5.50"]],
+      [64, "Döner BBQ",                 "Chicken or beef · BBQ sauce",                            ["5.00", "6.00"]],
+      [65, "Döner with Fries",          "Chicken or beef · fries inside",                         ["5.50", "6.50"]],
+      [66, "Döner Mixed with Fries",    "Chicken and beef · fries inside",                        ["6.00", "7.00"]],
+      [67, "Döner on a Plate",          "Chicken or beef · fries and sauces",                     ["6.50", "7.50"]],
     ],
   },
   {
     id: "tapas",
-    label: "Tapas",
-    note: "Te apetece algo para picar",
+    label: "Sides",
+    note: "Fancy something to snack on",
     items: [
-      [26, "6 Nuggets con Patatas Fritas",   "", "6,00"],
-      [27, "6 Croquetas con Patatas Fritas", "", "5,00"],
-      [28, "6 Alitas con Patatas Fritas",    "", "6,00"],
-      [29, "2 Samosas de Verduras",          "", "3,50"],
-      [30, "2 Samosas de Carne",             "", "4,50"],
-      [31, "Patatas Fritas",                 "", "3,00"],
-      [32, "Patatas Bravas o Deluxe",        "", "3,50"],
-      [33, "8 Aros de Cebolla",              "", "4,00"],
-      [34, "Hamburguesa de Pollo",           "", "4,50"],
+      [26, "6 Nuggets with Fries",      "", "6.00"],
+      [27, "6 Croquettes with Fries",   "", "5.00"],
+      [28, "6 Chicken Wings with Fries","", "6.00"],
+      [29, "2 Veggie Samosas",          "", "3.50"],
+      [30, "2 Meat Samosas",            "", "4.50"],
+      [31, "Fries",                     "", "3.00"],
+      [32, "Patatas Bravas or Deluxe",  "", "3.50"],
+      [33, "8 Onion Rings",             "", "4.00"],
+      [34, "Chicken Burger",            "", "4.50"],
     ],
   },
   {
     id: "ensaladas",
-    label: "Ensaladas",
+    label: "Salads",
     items: [
-      [35, "Ensalada Basic",      "Lechuga, tomate, maíz, pepino y salsa",                            "3,50"],
-      [36, "Ensalada B&C",        "Lechuga, tomate, maíz, mozzarella y pechuga de pollo",             "5,00"],
-      [37, "Ensalada Valenciana", "Lechuga, tomate, maíz, pepino, cebolla, olivas, huevo y atún",     "5,00"],
-      [38, "Ensalada España",     "Lechuga, tomate, jamón york, queso, aceitunas y piña",             "5,50"],
+      [35, "Basic Salad",       "Lettuce, tomato, corn, cucumber and dressing",                        "3.50"],
+      [36, "B&C Salad",         "Lettuce, tomato, corn, mozzarella and chicken breast",                "5.00"],
+      [37, "Valencian Salad",   "Lettuce, tomato, corn, cucumber, onion, olives, egg and tuna",        "5.00"],
+      [38, "España Salad",      "Lettuce, tomato, ham, cheese, olives and pineapple",                  "5.50"],
     ],
   },
   {
     id: "bebidas",
-    label: "Bebidas",
+    label: "Drinks",
     items: [
-      [39, "Refrescos 33cl",          "Coca-Cola, Cola Light y Zero, Fanta, Aquarius, Sprite, Nestea", "1,40"],
-      [40, "Refrescos 2L",            "Coca-Cola, Cola Light y Zero, Fanta, Sprite",                   "2,90"],
-      [41, "Agua Pequeña",            "",                                                              "1,00"],
-      [42, "Agua Grande 1,5L",        "",                                                              "1,40"],
-      [43, "Monster / Red Bull",      "",                                                              "2,50"],
-      [44, "Bebidas Energéticas",     "Variedad",                                                      "2,50"],
-      [45, "Bebidas Latinas",         "Variedad",                                                      "2,50"],
+      [39, "Soft Drinks 33cl",      "Coca-Cola, Coke Light & Zero, Fanta, Aquarius, Sprite, Nestea",   "1.40"],
+      [40, "Soft Drinks 2L",        "Coca-Cola, Coke Light & Zero, Fanta, Sprite",                     "2.90"],
+      [41, "Small Water",           "",                                                                "1.00"],
+      [42, "Large Water 1.5L",      "",                                                                "1.40"],
+      [43, "Monster / Red Bull",    "",                                                                "2.50"],
+      [44, "Energy Drinks",         "Assorted",                                                        "2.50"],
+      [45, "Latin Drinks",          "Assorted",                                                        "2.50"],
     ],
   },
 ];
@@ -144,7 +144,7 @@ const SECTIONS = [
    Render
    ============================================================ */
 
-const euro = (v) => `${v}€`;
+const euro = (v) => `€${v}`;
 
 function renderCombos() {
   const grid = document.getElementById("comboGrid");
@@ -152,15 +152,15 @@ function renderCombos() {
     <article class="combo reveal">
       ${c.tag ? `<span class="combo-tag">${c.tag}</span>` : ""}
       <div class="combo-body">
-        <h3>Menú ${c.n}</h3>
+        <h3>Deal ${c.n}</h3>
         <ul>${c.items.map((i) => `<li>${i}</li>`).join("")}</ul>
-        <div class="combo-price">${c.price} <small>/ menú</small></div>
+        <div class="combo-price">${c.price} <small>/ deal</small></div>
       </div>
     </article>
   `).join("");
 
   document.getElementById("extrasBar").innerHTML =
-    `<span class="extras-title">Extras de menú</span>` +
+    `<span class="extras-title">Deal extras</span>` +
     MENU_EXTRAS.map((e) => `<span>${e}</span>`).join("");
 }
 
@@ -175,7 +175,7 @@ function renderTabs() {
   panels.innerHTML = SECTIONS.map((s, i) => {
     const multi = s.sizes && s.sizes.length > 1;
     const head = multi
-      ? `<div class="menu-cols-head"><span>Cuando nos hagas el pedido, indícanos el número</span>
+      ? `<div class="menu-cols-head"><span>Tell us the item number when ordering</span>
            <span class="sizes">${s.shortSizes.map((x) => `<span>${x}</span>`).join("")}</span></div>`
       : "";
 
