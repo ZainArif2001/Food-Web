@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#d62828" />
   <title>B&C Döner Kebab &amp; Pizzeria — Valencia | Menu &amp; Meal Deals</title>
   <meta name="description" content="B&C Döner Kebab & Pizzeria in Valencia. Artisan pizzas, authentic döner kebab, sides and salads. Home delivery. Calle Brasil 7, next to Avda. del CID." />
   <meta property="og:title" content="B&C Döner Kebab &amp; Pizzeria — Valencia" />
@@ -48,10 +49,7 @@
         <svg viewBox="0 0 24 24" class="ic"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.8a1 1 0 0 0 1.4 0C13 19.5 20 13.4 20 10a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
         Calle Brasil, Nº7 Bajo — Valencia
       </span>
-      <span class="topbar-item topbar-hide">
-        <svg viewBox="0 0 24 24" class="ic"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6l4.2 2.5-.8 1.3L11 13.6V7h2v5.6z"/></svg>
-        Tue–Sun 12:30–00:00 · Mon 18:00–00:00
-      </span>
+      <span class="topbar-item topbar-hide" data-i18n="topbar.hours">Tue–Sun 12:30–00:00 · Mon 18:00–00:00</span>
     </div>
   </div>
 
@@ -63,15 +61,20 @@
         <span class="brand-text">Döner Kebab <em>&amp;</em> Pizzeria</span>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#menus" data-spy="menus">Meal Deals</a>
-        <a href="#carta" data-spy="carta">Menu</a>
-        <a href="#info" data-spy="info">Contact</a>
+        <a href="#menus" data-spy="menus" data-i18n="nav.menus">Meal Deals</a>
+        <a href="#carta" data-spy="carta" data-i18n="nav.carta">Menu</a>
+        <a href="#order" data-spy="order" data-i18n="nav.order">Order</a>
+        <a href="#info" data-spy="info" data-i18n="nav.info">Contact</a>
         <a href="tel:+34963261137" class="btn btn-primary btn-sm nav-call">
           <svg viewBox="0 0 24 24" class="ic"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-          Order now
+          <span data-i18n="nav.call">Order now</span>
         </a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" data-i18n-aria="a11y.menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -82,11 +85,11 @@
     <div class="hero-bg"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="hero-kicker reveal">Calle Brasil · Next to Avda. del CID · Valencia</p>
+        <p class="hero-kicker reveal" data-i18n="hero.kicker">Calle Brasil · Next to Avda. del CID · Valencia</p>
         <h1 class="hero-title reveal">Döner Kebab<br /><span>&amp; Pizzeria</span></h1>
-        <p class="hero-sub reveal">Artisan pizzas from 25 to 40 cm, authentic döner kebab in regular bread or wrap, sides and fresh salads. Freshly made, just the way you like it.</p>
+        <p class="hero-sub reveal" data-i18n="hero.sub">Artisan pizzas from 25 to 40 cm, authentic döner kebab in regular bread or wrap, sides and fresh salads. Freshly made, just the way you like it.</p>
         <div class="hero-cta reveal">
-          <a href="#carta" class="btn btn-primary">View the menu</a>
+          <a href="#carta" class="btn btn-primary" data-i18n="hero.cta">View the menu</a>
           <a href="tel:+34963261137" class="btn btn-ghost">
             <svg viewBox="0 0 24 24" class="ic"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
             963 26 11 37
@@ -97,17 +100,18 @@
           </a>
         </div>
         <div class="hero-pills reveal">
+          <span class="pill pill-status js-open-status"><span class="status-dot"></span>…</span>
           <span class="pill">
             <svg viewBox="0 0 24 24" class="ic"><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7zM6.5 18a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zm11 0a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5z"/></svg>
-            Home delivery · min. €10
+            <span data-i18n="pill.delivery">Home delivery · min. €10</span>
           </span>
           <span class="pill">
             <svg viewBox="0 0 24 24" class="ic"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 3v2h14V8H5z"/></svg>
-            Card &amp; Bizum
+            <span data-i18n="pill.pay">Card &amp; Bizum</span>
           </span>
           <span class="pill">
             <svg viewBox="0 0 24 24" class="ic"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
-            Halal options
+            <span data-i18n="pill.halal">Halal options</span>
           </span>
         </div>
       </div>
@@ -125,9 +129,9 @@
           <span class="basil b1"></span><span class="basil b2"></span><span class="basil b3"></span>
           <div class="pizza-badge">B&amp;C</div>
         </div>
-        <div class="float-chip fc1">Döner from <b>€4.00</b></div>
-        <div class="float-chip fc2">Pizzas <b>25–40 cm</b></div>
-        <div class="float-chip fc3"><b>8</b> meal deals</div>
+        <div class="float-chip fc1" data-i18n="chip.doner">Döner from <b>€4.00</b></div>
+        <div class="float-chip fc2" data-i18n="chip.pizzas">Pizzas <b>25–40 cm</b></div>
+        <div class="float-chip fc3" data-i18n="chip.deals"><b>8</b> meal deals</div>
       </div>
     </div>
   </section>
@@ -135,8 +139,8 @@
   <!-- Marquee -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Artisan pizzas</span><i>•</i><span>Döner kebab</span><i>•</i><span>Wrap bread</span><i>•</i><span>Sides</span><i>•</i><span>Salads</span><i>•</i><span>Halal options</span><i>•</i><span>Home delivery</span><i>•</i>
-      <span>Artisan pizzas</span><i>•</i><span>Döner kebab</span><i>•</i><span>Wrap bread</span><i>•</i><span>Sides</span><i>•</i><span>Salads</span><i>•</i><span>Halal options</span><i>•</i><span>Home delivery</span><i>•</i>
+      <span data-i18n="m.1">Artisan pizzas</span><i>•</i><span data-i18n="m.2">Döner kebab</span><i>•</i><span data-i18n="m.3">Wrap bread</span><i>•</i><span data-i18n="m.4">Sides</span><i>•</i><span data-i18n="m.5">Salads</span><i>•</i><span data-i18n="m.6">Halal options</span><i>•</i><span data-i18n="m.7">Home delivery</span><i>•</i>
+      <span data-i18n="m.1">Artisan pizzas</span><i>•</i><span data-i18n="m.2">Döner kebab</span><i>•</i><span data-i18n="m.3">Wrap bread</span><i>•</i><span data-i18n="m.4">Sides</span><i>•</i><span data-i18n="m.5">Salads</span><i>•</i><span data-i18n="m.6">Halal options</span><i>•</i><span data-i18n="m.7">Home delivery</span><i>•</i>
     </div>
   </div>
 
@@ -149,8 +153,8 @@
           <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>
         </div>
         <div>
-          <h3>Choose from the menu</h3>
-          <p>Just tell us the item number: pizzas 1–25, döner 46–67.</p>
+          <h3 data-i18n="step1.h">Choose from the menu</h3>
+          <p data-i18n="step1.p">Just tell us the item number: pizzas 1–25, döner 46–67.</p>
         </div>
       </div>
       <div class="step reveal">
@@ -159,8 +163,8 @@
           <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
         </div>
         <div>
-          <h3>Call or message us</h3>
-          <p>Order on 963 26 11 37 or WhatsApp 682 14 64 24.</p>
+          <h3 data-i18n="step2.h">Call or message us</h3>
+          <p data-i18n="step2.p">Order on 963 26 11 37 or WhatsApp 682 14 64 24.</p>
         </div>
       </div>
       <div class="step reveal">
@@ -169,8 +173,8 @@
           <svg viewBox="0 0 24 24"><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7zM6.5 18a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zm11 0a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5z"/></svg>
         </div>
         <div>
-          <h3>Delivery or pickup</h3>
-          <p>Home delivery with a €10 minimum order, or drop by Calle Brasil 7.</p>
+          <h3 data-i18n="step3.h">Delivery or pickup</h3>
+          <p data-i18n="step3.p">Home delivery with a €10 minimum order, or drop by Calle Brasil 7.</p>
         </div>
       </div>
     </div>
@@ -180,9 +184,9 @@
   <section class="section" id="menus">
     <div class="container">
       <div class="section-head reveal">
-        <p class="kicker">Deals for everyone</p>
-        <h2>Our Meal Deals</h2>
-        <p class="section-sub">The easiest way to eat well and save. Every deal includes fries and a drink.</p>
+        <p class="kicker" data-i18n="menus.kicker">Deals for everyone</p>
+        <h2 data-i18n="menus.h">Our Meal Deals</h2>
+        <p class="section-sub" data-i18n="menus.sub">The easiest way to eat well and save. Every deal includes fries and a drink.</p>
       </div>
       <div class="combo-grid" id="comboGrid"></div>
       <div class="extras-bar reveal" id="extrasBar"></div>
@@ -193,11 +197,79 @@
   <section class="section section-alt" id="carta">
     <div class="container">
       <div class="section-head reveal">
-        <p class="kicker">Tell us the item number when ordering</p>
-        <h2>Our Menu</h2>
+        <p class="kicker" data-i18n="carta.kicker">Tell us the item number when ordering</p>
+        <h2 data-i18n="carta.h">Our Menu</h2>
+      </div>
+      <div class="menu-toolbar reveal">
+        <div class="menu-search">
+          <svg viewBox="0 0 24 24" class="ic"><path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 1 0-.7.7l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+          <input type="search" id="menuSearch" placeholder="Search the menu — pepperoni, falafel, samosa…" data-i18n-ph="search.ph" aria-label="Search the menu" autocomplete="off" />
+        </div>
+        <button class="btn-print" id="printMenu" type="button">
+          <svg viewBox="0 0 24 24" class="ic"><path d="M19 8H5c-1.7 0-3 1.3-3 3v6h4v4h12v-4h4v-6c0-1.7-1.3-3-3-3zm-3 11H8v-5h8v5zm3-7a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-1-9H6v4h12V3z"/></svg>
+          <span data-i18n="btn.print">Print menu</span>
+        </button>
       </div>
       <div class="tabs reveal" id="menuTabs" role="tablist"></div>
       <div id="menuPanels"></div>
+      <noscript><p class="panel-note" data-i18n="noscript">Please enable JavaScript to view the full menu, or call us on <strong>963 26 11 37</strong>.</p></noscript>
+    </div>
+  </section>
+
+  <!-- Online order -->
+  <section class="section section-order" id="order">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="kicker" data-i18n="order.kicker">Skip the call</p>
+        <h2 data-i18n="order.h">Order Online</h2>
+        <p class="section-sub" data-i18n="order.sub">Build your order and send it straight to our WhatsApp — we confirm right away.</p>
+      </div>
+      <div class="order-grid reveal">
+        <div class="order-card">
+          <div class="field">
+            <label for="ordName" data-i18n="order.name">Your name</label>
+            <input type="text" id="ordName" data-i18n-ph="order.namePh" placeholder="e.g. Alex" autocomplete="name" />
+          </div>
+          <div class="field">
+            <span class="field-label" data-i18n="order.type">Order type</span>
+            <div class="order-type">
+              <label><input type="radio" name="ordType" value="delivery" checked /> <span data-i18n="order.delivery">Home delivery</span></label>
+              <label><input type="radio" name="ordType" value="pickup" /> <span data-i18n="order.pickup">Pickup</span></label>
+            </div>
+          </div>
+          <div class="field" id="ordAddrWrap">
+            <label for="ordAddr" data-i18n="order.addr">Delivery address</label>
+            <input type="text" id="ordAddr" data-i18n-ph="order.addrPh" placeholder="Street, number, floor…" autocomplete="street-address" />
+          </div>
+          <div class="field">
+            <span class="field-label" data-i18n="order.add">Add items</span>
+            <div class="order-add">
+              <select id="ordItem" aria-label="Item"></select>
+              <select id="ordSize" aria-label="Size" hidden></select>
+              <input type="number" id="ordQty" min="1" max="20" value="1" aria-label="Quantity" />
+              <button type="button" id="ordAdd" class="btn btn-dark btn-sm" data-i18n="order.addBtn">Add</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ordNote" data-i18n="order.note">Note (optional)</label>
+            <textarea id="ordNote" rows="2" data-i18n-ph="order.notePh" placeholder="No onion, extra sauce…"></textarea>
+          </div>
+        </div>
+        <div class="order-card order-summary">
+          <h3 data-i18n="order.your">Your order</h3>
+          <ul class="order-list" id="ordList"></ul>
+          <div class="order-total">
+            <span data-i18n="order.total">Total</span>
+            <strong id="ordTotal">€0.00</strong>
+          </div>
+          <p class="order-warn" id="ordWarn" hidden></p>
+          <a href="#" id="ordSend" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" class="ic"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.1.5.1.7-.1l1-1.1c.2-.3.5-.2.8-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.5 1.9z"/></svg>
+            <span data-i18n="order.send">Send order on WhatsApp</span>
+          </a>
+          <p class="order-hint" data-i18n="order.hint">Nothing is charged online — you pay on delivery or pickup.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -205,43 +277,46 @@
   <section class="section" id="info">
     <div class="container">
       <div class="section-head reveal">
-        <p class="kicker">We're waiting for you</p>
-        <h2>Hours &amp; Contact</h2>
+        <p class="kicker" data-i18n="info.kicker">We're waiting for you</p>
+        <h2 data-i18n="info.h">Hours &amp; Contact</h2>
       </div>
       <div class="info-grid">
         <div class="info-card reveal">
           <div class="info-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6l4.2 2.5-.8 1.3L11 13.6V7h2v5.6z"/></svg>
           </div>
-          <h3>Opening hours</h3>
+          <h3 data-i18n="hours.h">Opening hours</h3>
+          <p class="open-status js-open-status"><span class="status-dot"></span>…</p>
           <ul class="hours">
-            <li><span>Tuesday – Sunday</span><strong>12:30 – 00:00</strong></li>
-            <li><span>Monday</span><strong>18:00 – 00:00</strong></li>
+            <li><span data-i18n="hours.tue">Tuesday – Sunday</span><strong>12:30 – 00:00</strong></li>
+            <li><span data-i18n="hours.mon">Monday</span><strong>18:00 – 00:00</strong></li>
           </ul>
         </div>
-        <div class="info-card reveal">
+        <div class="info-card info-card-map reveal">
           <div class="info-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.8a1 1 0 0 0 1.4 0C13 19.5 20 13.4 20 10a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
           </div>
-          <h3>Find us</h3>
-          <p>Calle Brasil, Nº7 Bajo<br />46018 Valencia<br /><small>Next to Avda. del CID</small></p>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Calle+Brasil+7+46018+Valencia" target="_blank" rel="noopener">Get directions →</a>
+          <h3 data-i18n="findus.h">Find us</h3>
+          <iframe id="mapFrame" class="map" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Calle+Brasil+7+46018+Valencia&output=embed&hl=en"></iframe>
+          <p><span data-i18n="findus.addr">Calle Brasil, Nº7 Bajo · 46018 Valencia · Next to Avda. del CID</span></p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Calle+Brasil+7+46018+Valencia" target="_blank" rel="noopener" data-i18n="findus.link">Get directions →</a>
         </div>
         <div class="info-card reveal">
           <div class="info-icon">
             <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
           </div>
-          <h3>Order by phone</h3>
+          <h3 data-i18n="phone.h">Order by phone</h3>
           <p><a class="link" href="tel:+34963261137">963 26 11 37</a><br /><a class="link" href="https://wa.me/34682146424" target="_blank" rel="noopener">WhatsApp 682 14 64 24</a></p>
-          <p class="muted">Home delivery · Minimum order €10</p>
+          <p class="muted" data-i18n="phone.muted">Home delivery · Minimum order €10</p>
         </div>
         <div class="info-card reveal">
           <div class="info-icon">
             <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 3v2h14V8H5zm0 5h6v3H5z"/></svg>
           </div>
-          <h3>Payments</h3>
-          <p>We accept <strong>card</strong> and <strong>Bizum</strong>.</p>
-          <p class="muted">Fast, easy, no hassle.</p>
+          <h3 data-i18n="pay.h">Payments</h3>
+          <p data-i18n="pay.p">We accept <strong>card</strong> and <strong>Bizum</strong>.</p>
+          <p class="muted" data-i18n="pay.muted">Fast, easy, no hassle.</p>
         </div>
       </div>
     </div>
@@ -260,7 +335,7 @@
       <div class="footer-meta">
         <a href="tel:+34963261137">963 26 11 37</a>
         <a href="https://wa.me/34682146424" target="_blank" rel="noopener">WhatsApp 682 14 64 24</a>
-        <span>© <span id="year"></span> B&amp;C · All rights reserved</span>
+        <span>© <span id="year"></span> B&amp;C · <span data-i18n="footer.rights">All rights reserved</span></span>
       </div>
     </div>
   </footer>
@@ -268,32 +343,35 @@
   <!-- Welcome popup -->
   <div class="popup-backdrop" id="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
     <div class="popup">
-      <button class="popup-close" aria-label="Close">&times;</button>
+      <button class="popup-close" aria-label="Close" data-i18n-aria="a11y.close">&times;</button>
       <span class="popup-badge">B&amp;C</span>
-      <h3 id="popupTitle">Hungry?<br /><span>Order now</span></h3>
-      <p>Home delivery in Valencia — just tell us the item number and you're set.</p>
+      <h3 id="popupTitle"><span data-i18n="popup.h1">Hungry?</span><br /><span data-i18n="popup.h2">Order now</span></h3>
+      <p data-i18n="popup.p">Home delivery in Valencia — just tell us the item number and you're set.</p>
       <div class="popup-chips">
-        <span>Min. order <b>€10</b></span>
-        <span>Card / <b>Bizum</b></span>
-        <span>Tue–Sun <b>12:30–00:00</b></span>
+        <span data-i18n="chip.min">Min. order <b>€10</b></span>
+        <span data-i18n="chip.pay">Card / <b>Bizum</b></span>
+        <span data-i18n="chip.hours">Tue–Sun <b>12:30–00:00</b></span>
       </div>
       <div class="popup-actions">
-        <a href="#carta" class="btn btn-primary btn-block">View the menu</a>
+        <a href="#carta" class="btn btn-primary btn-block" data-i18n="popup.cta">View the menu</a>
         <div class="popup-actions-row">
-          <a href="tel:+34963261137" class="btn btn-dark">Call</a>
+          <a href="tel:+34963261137" class="btn btn-dark" data-i18n="popup.call">Call</a>
           <a href="https://wa.me/34682146424" target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a>
         </div>
       </div>
-      <label class="popup-never"><input type="checkbox" id="popupNever" /> Don't show again</label>
+      <label class="popup-never"><input type="checkbox" id="popupNever" /> <span data-i18n="popup.never">Don't show again</span></label>
     </div>
   </div>
 
   <!-- Floating actions -->
   <div class="fab-group">
+    <button class="fab fab-top" id="toTop" aria-label="Back to top" data-i18n-aria="a11y.top">
+      <svg viewBox="0 0 24 24"><path d="M12 8l6 6H6z"/></svg>
+    </button>
     <a href="https://wa.me/34682146424" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.1.5.1.7-.1l1-1.1c.2-.3.5-.2.8-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.5 1.9z"/></svg>
     </a>
-    <a href="tel:+34963261137" class="fab fab-call" aria-label="Call">
+    <a href="tel:+34963261137" class="fab fab-call" aria-label="Call" data-i18n-aria="a11y.call">
       <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
     </a>
   </div>
