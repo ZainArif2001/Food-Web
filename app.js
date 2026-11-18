@@ -151,9 +151,11 @@ function renderCombos() {
   grid.innerHTML = COMBOS.map((c) => `
     <article class="combo reveal">
       ${c.tag ? `<span class="combo-tag">${c.tag}</span>` : ""}
-      <h3>Menú ${c.n}</h3>
-      <ul>${c.items.map((i) => `<li>${i}</li>`).join("")}</ul>
-      <div class="combo-price">${c.price} <small>/ menú</small></div>
+      <div class="combo-body">
+        <h3>Menú ${c.n}</h3>
+        <ul>${c.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+        <div class="combo-price">${c.price} <small>/ menú</small></div>
+      </div>
     </article>
   `).join("");
 
@@ -239,8 +241,53 @@ function initReveal() {
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 }
 
+function initScrollSpy() {
+  const links = document.querySelectorAll(".nav-links a[data-spy]");
+  const map = {};
+  links.forEach((l) => (map[l.dataset.spy] = l));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        links.forEach((l) => l.classList.remove("active"));
+        map[en.target.id]?.classList.add("active");
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  ["menus", "carta", "info"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+}
+
+function initPopup() {
+  const popup = document.getElementById("popup");
+  if (!popup) return;
+  if (localStorage.getItem("bc_popup_hide") || sessionStorage.getItem("bc_popup_seen")) return;
+
+  const close = () => {
+    if (document.getElementById("popupNever").checked) {
+      localStorage.setItem("bc_popup_hide", "1");
+    }
+    sessionStorage.setItem("bc_popup_seen", "1");
+    popup.classList.remove("show");
+    document.body.style.overflow = "";
+  };
+
+  setTimeout(() => {
+    popup.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }, 900);
+
+  popup.querySelector(".popup-close").addEventListener("click", close);
+  popup.addEventListener("click", (e) => { if (e.target === popup) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  popup.querySelectorAll("a.btn").forEach((a) => a.addEventListener("click", close));
+}
+
 renderCombos();
 renderTabs();
 initNav();
 initReveal();
+initScrollSpy();
+initPopup();
 document.getElementById("year").textContent = new Date().getFullYear();
