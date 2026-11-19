@@ -436,6 +436,20 @@ a { color: inherit; text-decoration: none; }
 }
 .menu-name { font-weight: 800; font-size: .98rem; }
 .menu-desc { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
+.item-thumb {
+  flex: 0 0 auto; align-self: center;
+  width: 52px; height: 42px; padding: 0;
+  border: 1px solid var(--line); border-radius: 10px;
+  overflow: hidden; background: var(--cream);
+  cursor: zoom-in;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.item-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.item-thumb:hover, .item-thumb:focus-visible {
+  transform: scale(1.07);
+  box-shadow: 0 4px 14px rgba(23, 17, 13, .2);
+}
+@media (max-width: 640px) { .item-thumb { width: 44px; height: 36px; } }
 .menu-prices { display: flex; gap: .4rem; flex-shrink: 0; }
 .price-tag {
   min-width: 76px; text-align: center;
@@ -715,7 +729,7 @@ a { color: inherit; text-decoration: none; }
 .panel-title { display: none; }
 @media print {
   .topbar, .nav, .hero, .marquee, .steps, .menu-toolbar, .tabs,
-  .fab-group, .popup-backdrop, .extras-bar, .footer,
+  .fab-group, .popup-backdrop, .extras-bar, .footer, .item-thumb, .lb,
   .section-head .section-sub, .section-head .kicker { display: none !important; }
   body { background: #fff; }
   .section { padding: 1.2rem 0; }
@@ -766,6 +780,34 @@ a { color: inherit; text-decoration: none; }
   box-shadow: var(--shadow);
 }
 @media print { .panel-img, .combo-img { display: none !important; } }
+
+/* ---------- Item photo lightbox ---------- */
+.lb {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: .9rem;
+  padding: 1.5rem;
+  background: rgba(15, 10, 8, .88);
+  backdrop-filter: blur(6px);
+  opacity: 0; visibility: hidden;
+  transition: opacity .25s ease, visibility .25s;
+}
+.lb.show { opacity: 1; visibility: visible; }
+.lb img {
+  max-width: min(680px, 92vw); max-height: 74vh; object-fit: cover;
+  border-radius: 16px; border: 3px solid rgba(255, 255, 255, .15);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+}
+.lb-cap { color: #fff; font-weight: 800; font-size: 1rem; letter-spacing: .02em; }
+.lb-close {
+  position: absolute; top: 1.1rem; right: 1.1rem;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, .1); color: #fff;
+  font-size: 1.5rem; line-height: 1; cursor: pointer;
+  transition: background .2s;
+}
+.lb-close:hover { background: rgba(255, 255, 255, .22); }
 
 /* ---------- Map ---------- */
 .map {

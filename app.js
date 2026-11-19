@@ -105,24 +105,43 @@ const STR = {
 };
 
 /* ---------- Photos (replace with your own when you have them) ---------- */
+const U = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&q=70&auto=format`;
+const PH = {
+  pizza:   ["1513104890138-7c749659a591", "1574071318508-1cdbab80d002", "1565299624946-b28f40a0ae38", "1593560708920-61dd98c46a4e"],
+  kebab:   "1599487488170-d11ec9c172f0",
+  wrap:    "1626700051175-6818013e1d4f",
+  burger:  "1568901346375-23c9450c58cd",
+  salad:   ["1512621776951-a57141f2eefd", "1546069901-ba9599a7e63c"],
+  nuggets: "1562967916-eb82221dfb92",
+  wings:   "1626645738196-c2a7c87a8f58",
+  samosa:  "1601050690597-df0568f70950",
+  fries:   "1541592106381-b31e9677c0e5",
+  rings:   "1639024471283-03518883512d",
+  falafel: "1547058881-aa0edd92aab3",
+  plate:   "1603360946369-dc9bb6258143",
+  cola:    "1554866585-cd94860890b7",
+  soda:    "1622483767028-3f66f32aef97",
+  water:   "1523362628745-0c100150b504",
+  juice:   "1613478223719-2ab802602423",
+};
+const ph = (cat, w, h, seed = 0) => {
+  const p = PH[cat] || PH.pizza;
+  return U(Array.isArray(p) ? p[seed % p.length] : p, w, h);
+};
+
 const IMG = {
   deals: {
-    1: "https://loremflickr.com/640/420/kebab?lock=1",
-    2: "https://loremflickr.com/640/420/kebab?lock=2",
-    3: "https://loremflickr.com/640/420/kebab?lock=3",
-    4: "https://loremflickr.com/640/420/friedchicken?lock=4",
-    5: "https://loremflickr.com/640/420/burger?lock=5",
-    6: "https://loremflickr.com/640/420/pizza?lock=6",
-    7: "https://loremflickr.com/640/420/pizza?lock=7",
-    8: "https://loremflickr.com/640/420/pizza?lock=8",
+    1: ph("kebab", 640, 420), 2: ph("wrap", 640, 420), 3: ph("kebab", 640, 420),
+    4: ph("wings", 640, 420), 5: ph("burger", 640, 420),
+    6: ph("pizza", 640, 420, 0), 7: ph("pizza", 640, 420, 1), 8: ph("pizza", 640, 420, 2),
   },
   sections: {
-    "pizzas":       "https://loremflickr.com/1200/380/pizza?lock=21",
-    "kebab-normal": "https://loremflickr.com/1200/380/kebab?lock=22",
-    "kebab-rollo":  "https://loremflickr.com/1200/380/shawarma?lock=23",
-    "tapas":        "https://loremflickr.com/1200/380/frenchfries?lock=24",
-    "ensaladas":    "https://loremflickr.com/1200/380/salad?lock=25",
-    "bebidas":      "https://loremflickr.com/1200/380/soda?lock=26",
+    "pizzas":       ph("pizza", 1200, 380, 3),
+    "kebab-normal": ph("kebab", 1200, 380),
+    "kebab-rollo":  ph("wrap", 1200, 380),
+    "tapas":        ph("fries", 1200, 380),
+    "ensaladas":    ph("salad", 1200, 380, 1),
+    "bebidas":      ph("soda", 1200, 380),
   },
 };
 
@@ -393,9 +412,29 @@ const D = () => DATA[cur];
 const flatItems = () =>
   D().sections.flatMap((s) =>
     s.items.map(([num, name, desc, prices]) => ({
-      num, name, desc, prices, section: s.label, sizes: s.sizes || null, shortSizes: s.shortSizes || null,
+      num, name, desc, prices, section: s.label, secId: s.id, sizes: s.sizes || null, shortSizes: s.shortSizes || null,
     }))
   );
+
+/* ---------- Item thumbnails ---------- */
+const ITEM_PIC = {
+  26: "nuggets", 27: "wings", 28: "wings", 29: "samosa", 30: "samosa",
+  31: "fries", 32: "fries", 33: "rings", 34: "burger",
+  35: "salad", 36: "salad", 37: "salad", 38: "salad",
+  39: "cola", 40: "soda", 41: "water", 42: "water", 43: "soda", 44: "soda", 45: "juice",
+  52: "falafel", 63: "falafel", 56: "plate", 67: "plate",
+};
+const itemCat = (secId, n) =>
+  ITEM_PIC[n] ||
+  (secId === "pizzas" ? "pizza"
+    : secId === "kebab-rollo" ? "wrap"
+    : secId === "kebab-normal" ? "kebab"
+    : secId === "ensaladas" ? "salad" : "soda");
+
+const itemThumb = (secId, num, name) =>
+  `<button type="button" class="item-thumb" data-full="${ph(itemCat(secId, num), 640, 440, num)}" data-num="${num}" data-name="${name.replace(/"/g, "&quot;")}" aria-label="Photo">
+    <img src="${ph(itemCat(secId, num), 150, 110, num)}" alt="" loading="lazy" onerror="this.closest('.item-thumb').remove()">
+  </button>`;
 
 /* ============================================================
    Render
@@ -443,6 +482,7 @@ function renderTabs(keepActive = true) {
       return `<div class="menu-row${multi ? "" : " single"}">
         <div class="menu-item">
           <span class="menu-num">${num}</span>
+          ${itemThumb(s.id, num, name)}
           <div>
             <div class="menu-name">${name}</div>
             ${desc ? `<div class="menu-desc">${desc}</div>` : ""}
@@ -751,7 +791,7 @@ function initSearch() {
             const tags = arr.map((p, j) =>
               `<span class="price-tag" data-size="${it.shortSizes ? it.shortSizes[j] : ""}">${fmt(p)}</span>`).join("");
             return `<div class="menu-row${it.sizes ? "" : " single"}">
-              <div class="menu-item"><span class="menu-num">${it.num}</span>
+              <div class="menu-item"><span class="menu-num">${it.num}</span>${itemThumb(it.secId, it.num, it.name)}
                 <div><div class="menu-name">${it.name}<span class="search-section">${it.section}</span></div>
                 ${it.desc ? `<div class="menu-desc">${it.desc}</div>` : ""}</div></div>
               <div class="menu-prices">${tags}</div></div>`;
@@ -794,6 +834,25 @@ function initPrint() {
   if (btn) btn.addEventListener("click", () => window.print());
 }
 
+function initLightbox() {
+  const lb = document.getElementById("lb");
+  if (!lb) return;
+  const img = document.getElementById("lbImg");
+  const cap = document.getElementById("lbCap");
+  const close = () => lb.classList.remove("show");
+  lb.addEventListener("click", (e) => { if (e.target !== img) close(); });
+  document.getElementById("lbClose").addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  document.getElementById("menuPanels").addEventListener("click", (e) => {
+    const b = e.target.closest(".item-thumb");
+    if (!b) return;
+    img.src = b.dataset.full;
+    img.alt = b.dataset.name;
+    cap.textContent = `#${b.dataset.num} · ${b.dataset.name}`;
+    lb.classList.add("show");
+  });
+}
+
 /* ---------- Boot ---------- */
 applyLang();
 initLangSwitch();
@@ -806,4 +865,5 @@ initSearch();
 initOpenStatus();
 initToTop();
 initPrint();
+initLightbox();
 document.getElementById("year").textContent = new Date().getFullYear();
