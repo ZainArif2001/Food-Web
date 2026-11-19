@@ -380,7 +380,7 @@ const DATA = {
    State + helpers
    ============================================================ */
 const WA_NUMBER = "34682146424";
-let cur = localStorage.getItem("bc_lang") || "en";
+let cur = localStorage.getItem("bc_lang") || "es";
 
 const S = (k, vars) => {
   let t = STR[cur][k] ?? STR.en[k] ?? k;
