@@ -389,7 +389,8 @@ const S = (k, vars) => {
 };
 const fmt = (v) => (cur === "es" ? `${String(v).replace(".", ",")}€` : `€${v}`);
 const money = (v) => fmt(v.toFixed(2));
-const D = () => DATA[cur];
+let MENU_DATA = DATA;              // replaced by DB data when api/menu.php is reachable
+const D = () => MENU_DATA[cur];
 const flatItems = () =>
   D().sections.flatMap((s) =>
     s.items.map(([num, name, desc, prices]) => ({
@@ -404,7 +405,7 @@ function renderCombos() {
   document.getElementById("comboGrid").innerHTML = D().combos.map((c) => `
     <article class="combo">
       ${c.tag ? `<span class="combo-tag">${S(c.tag)}</span>` : ""}
-      <img class="combo-img" src="${IMG.deals[c.n]}" alt="${c.items[0]}" loading="lazy" onerror="this.remove()" />
+      <img class="combo-img" src="${c.img || IMG.deals[c.n]}" alt="${c.items[0]}" loading="lazy" onerror="this.remove()" />
       <div class="combo-body">
         <h3>${S("deal.h")} ${c.n}</h3>
         <ul>${c.items.map((i) => `<li>${i}</li>`).join("")}</ul>
@@ -618,7 +619,21 @@ function initOrder() {
     document.getElementById(id).addEventListener("input", updateWaLink)
   );
   document.getElementById("ordSend").addEventListener("click", (e) => {
-    if (!order.length) e.preventDefault();
+    if (!order.length) { e.preventDefault(); return; }
+    try {
+      const isDelivery = document.querySelector('input[name="ordType"]:checked')?.value === "delivery";
+      fetch("api/orders.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("ordName").value.trim(),
+          type: isDelivery ? "delivery" : "pickup",
+          address: document.getElementById("ordAddr").value.trim(),
+          note: document.getElementById("ordNote").value.trim(),
+          items: order,
+        }),
+      }).catch(() => {});
+    } catch { /* static mode — WhatsApp only */ }
   });
   renderOrder();
 }
@@ -795,15 +810,24 @@ function initPrint() {
 }
 
 /* ---------- Boot ---------- */
-applyLang();
-initLangSwitch();
-initOrder();
-initNav();
-initReveal();
-initScrollSpy();
-initPopup();
-initSearch();
-initOpenStatus();
-initToTop();
-initPrint();
-document.getElementById("year").textContent = new Date().getFullYear();
+(async () => {
+  try {
+    const r = await fetch("api/menu.php");
+    if (r.ok) {
+      const j = await r.json();
+      if (j && j.en && j.es) MENU_DATA = j;
+    }
+  } catch { /* no API → static data */ }
+  applyLang();
+  initLangSwitch();
+  initOrder();
+  initNav();
+  initReveal();
+  initScrollSpy();
+  initPopup();
+  initSearch();
+  initOpenStatus();
+  initToTop();
+  initPrint();
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();

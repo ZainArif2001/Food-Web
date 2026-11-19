@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B&C Admin — Menu Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="admin-top">
+    <div class="admin-top-in">
+      <span class="brand-badge">B&amp;C</span>
+      <strong>Admin Panel</strong>
+      <button id="logoutBtn" class="btn-ghost-sm" hidden>Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+
+    <!-- Login -->
+    <div id="loginView" class="login-wrap" hidden>
+      <div class="login-bg"></div>
+      <div class="login-card">
+        <span class="login-badge">B&amp;C</span>
+        <h1>Admin Panel</h1>
+        <p class="muted">Döner Kebab &amp; Pizzeria — menu &amp; orders manager</p>
+        <form id="loginForm">
+          <div class="lfield">
+            <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4 0-8 2-8 5v3h16v-3c0-3-4-5-8-5z"/></svg>
+            <input type="text" id="loginUser" placeholder="Username" autocomplete="username" required />
+          </div>
+          <div class="lfield">
+            <svg viewBox="0 0 24 24"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg>
+            <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn-login">Login</button>
+          <p id="loginErr" class="err" hidden>Wrong username or password.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="adminView" hidden>
+      <nav class="admin-tabs">
+        <button class="atab active" data-tab="items">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v3H4zm0 6h16v3H4zm0 6h10v3H4z"/></svg>Items
+        </button>
+        <button class="atab" data-tab="deals">
+          <svg viewBox="0 0 24 24"><path d="M21.4 11.6l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .6 1.4l9 9a2 2 0 0 0 2.8 0l7-7a2 2 0 0 0 0-2.8zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg>Meal Deals
+        </button>
+        <button class="atab" data-tab="orders">
+          <svg viewBox="0 0 24 24"><path d="M6 2h12v20l-2-1.5L14 22l-2-1.5L10 22l-2-1.5L6 22zm3 5h6v2H9zm0 4h6v2H9z"/></svg>Orders
+          <span id="newCount" class="new-count" hidden></span>
+        </button>
+      </nav>
+
+      <section id="tab-items" class="apane">
+        <div class="apane-head">
+          <select id="itemSection"></select>
+          <div class="item-search">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 1 0-.7.7l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+            <input type="search" id="itemSearch" placeholder="Search item…" />
+          </div>
+          <span class="muted" id="itemsHint"></span>
+        </div>
+        <div id="itemsList"></div>
+      </section>
+
+      <section id="tab-deals" class="apane" hidden>
+        <div id="dealsList"></div>
+      </section>
+
+      <section id="tab-orders" class="apane" hidden>
+        <div class="stats-row" id="orderStats"></div>
+        <div class="apane-head">
+          <button id="refreshOrders" class="btn-ghost-sm">↻ Refresh</button>
+          <span class="muted">Naye orders yahan aate hain (auto-refresh 30s).</span>
+        </div>
+        <div id="ordersList"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="admin.js"></script>
+</body>
+</html>
